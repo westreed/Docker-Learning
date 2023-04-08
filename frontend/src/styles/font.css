@@ -1,0 +1,10 @@
+@font-face {
+    font-family:'nanumgothic';
+    src: url('../fonts/NanumGothic-Regular.ttf') format('woff');
+    font-weight: 100;
+    font-style: "normal";
+}
+
+.App {
+    font-family: 'nanumgothic';
+}

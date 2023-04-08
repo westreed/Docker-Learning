@@ -1,0 +1,12 @@
+import CategoryPostList from "../components/categoryPostList";
+
+
+const CategoryPost = (props) => {
+    return (
+        <div style={{width:"100%"}}>
+            <CategoryPostList headerRef={props.headerRef}/>
+        </div>
+    );
+}
+
+export default CategoryPost;
