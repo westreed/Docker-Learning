@@ -1,0 +1,8 @@
+FROM mysql:8.0
+
+ENV MYSQL_ROOT_PASSWORD ${DB_PASSWORD}
+ENV MYSQL_DATABASE reactblog
+
+RUN echo $DB_PASSWORD
+
+VOLUME /data:/var/lib/mysql

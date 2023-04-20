@@ -1,0 +1,26 @@
+version: '3'
+services:
+  database:
+    build: ./database
+    env_file:
+      - fileName
+    ports:
+      - "3307:3307"
+
+  backend:
+    build: ./backend
+    env_file:
+      - # TODO: env 이어서 작업
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://database:3307/reactblog?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&serverTimezone=Asia/Seoul
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
