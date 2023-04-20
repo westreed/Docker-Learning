@@ -18,7 +18,7 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - "3001:3000"
+      - "3000:3000"
 
 # .env 파일을 docker-compose.yml 파일과 동일한 폴더안에 만들어두면
 # 따로 import 없이 ${} 변수참조만 작성하면 된다.
