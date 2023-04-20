@@ -2,26 +2,23 @@ version: '3'
 services:
   database:
     build: ./database
-    ports:
-      - "3307:3307"
     environment:
-      DB_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: reactblog
 
   backend:
-    build: ./backend
-    ports:
-      - "8081:8081"
     depends_on:
       - database
+    build: ./backend
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://database:3307/reactblog?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&serverTimezone=Asia/Seoul
+      SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/reactblog?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&serverTimezone=Asia/Seoul
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
 
   frontend:
     build: ./frontend
     ports:
-      - "3001:3001"
+      - "3001:3000"
 
 # .env 파일을 docker-compose.yml 파일과 동일한 폴더안에 만들어두면
 # 따로 import 없이 ${} 변수참조만 작성하면 된다.
