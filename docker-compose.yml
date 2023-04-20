@@ -2,17 +2,15 @@ version: '3'
 services:
   database:
     build: ./database
-    env_file:
-      - fileName
     ports:
       - "3307:3307"
+    environment:
+      DB_PASSWORD: ${DB_PASSWORD}
 
   backend:
     build: ./backend
-    env_file:
-      - # TODO: env 이어서 작업
     ports:
-      - "8080:8080"
+      - "8081:8081"
     depends_on:
       - database
     environment:
@@ -23,4 +21,7 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - "3000:3000"
+      - "3001:3001"
+
+# .env 파일을 docker-compose.yml 파일과 동일한 폴더안에 만들어두면
+# 따로 import 없이 ${} 변수참조만 작성하면 된다.
