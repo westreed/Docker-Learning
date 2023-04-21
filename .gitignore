@@ -1,1 +1,10 @@
 .env
+
+# frontend
+/frontend/build
+
+# backend
+/backend/*.jar
+
+# volumes
+/mysql

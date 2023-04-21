@@ -1,14 +1,13 @@
-FROM node:18.4.0
+FROM nginx:latest
 
-WORKDIR /home/blog/frontend
+# RUN rm -f /etc/nginx/conf.d/default.conf
+# COPY /proxy/myapp.conf /etc/nginx/conf.d/default.conf
+# RUN rm -f /etc/nginx/nginx.conf
+# COPY /proxy/nginx.conf /etc/nginx/nginx.conf
 
-COPY package*.json ./
-
-RUN npm install
-
-COPY . .
-
-CMD [ "npm", "run", "start" ]
+WORKDIR /home/blog
+COPY /build ./build
+CMD ["nginx", "-g", "daemon off;"]
 
 # docker build -t {이미지명} {경로} ex. docker build -t frontend .
 
