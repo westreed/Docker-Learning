@@ -14,8 +14,3 @@ Docker-Run 컨테이너 생성 및 실행
 ```bash
 docker run --name {컨테이너명} -p 컨테이너포트:호스트포트 {이미지명}
 ```
-
-
-## TODO
-
-1. frontend는 build로 변경하고, nginx 서버로 실행할 수 있도록 변경하기
